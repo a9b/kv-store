@@ -73,7 +73,7 @@ const String = {
   }
 }
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     stepCount: 0,
     impression: '',
@@ -100,3 +100,5 @@ export default new Vuex.Store({
     String
   }
 })
+
+export { store }
