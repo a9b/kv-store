@@ -2,10 +2,12 @@
   <div>
     Formページ
     <HeadComp></HeadComp>
-    <component
-    :is="isComponent"
-    ></component>
+    <component :is="isComponent"></component>
     <button v-on:click="buttonAction">{{button}}</button>
+
+    <div>
+      <router-link to="/signup">Sign up</router-link>
+    </div>
   </div>
 </template>
 
