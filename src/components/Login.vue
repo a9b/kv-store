@@ -1,6 +1,6 @@
 <template>
   <div class="pure-u pure-u-1-2 layout-center">
-    <h1>Sign up</h1>
+    <h1>Login</h1>
     <InputForm v-if="displayInput" @child-set-username="parentSetUsername"></InputForm>
     <Confirm v-if="displayConfirm" :username="username"></Confirm>
   </div>
