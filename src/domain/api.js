@@ -16,6 +16,14 @@ export default function ActionsFactory (config) {
       }).catch(function (error) {
         console.log(error)
       })
+    },
+
+    insertKV (key, value) {
+      return client.post('/a9b').then(function (res) {
+        return res.data
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
   }
 }

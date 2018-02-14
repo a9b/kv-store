@@ -2,14 +2,15 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import cognitoConfig from '@/../config/cognito'
 import CognitoAuth from 'vue-auth-cognito'
-import Kvs from '@/store/modules/kvs'
+import itemStore from '@/store/modules/itemStore'
+import userStore from '@/store/modules/userStore'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     isLogined: false,
-    isSelf: false
+    isAuthor: false
   },
   mutations: {
   },
@@ -17,6 +18,7 @@ export default new Vuex.Store({
   },
   modules: {
     cognito: new CognitoAuth(cognitoConfig),
-    Kvs
+    itemStore,
+    userStore
   }
 })

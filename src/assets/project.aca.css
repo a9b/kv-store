@@ -33,7 +33,7 @@ body {
     font-size: 100%;
     *font-size: 90%; /*IE 6/7 - To reduce IE's oversized button text*/
     *overflow: visible; /*IE 6/7 - Because of IE's overly large left/right padding on buttons */
-    padding: 0.5em 1.5em 0.5em;
+    padding: 0.3em 1.5em 0.3em;
     color: #0e3931; /* rgba not supported (IE 8) */
     /* color: rgba(0, 0, 0, 0.80); rgba supported */
     /* *color: #444; IE 6 & 7 */
@@ -339,7 +339,7 @@ Forms Core
 .pure-skin-aca .pure-form input[type="color"],
 .pure-skin-aca .pure-form select,
 .pure-skin-aca .pure-form textarea {
-    padding: 0.5em 0.6em;
+    padding: 0.3em 0.6em;
     display: inline-block;
     border: 1px solid #e6e6e6;
     font-size: 0.8em;
@@ -524,7 +524,7 @@ Forms Core
 }
 .pure-skin-aca .pure-form .pure-group input {
     display: block;
-    padding: 0.5em 0.6em;
+    padding: 0.3em 0.6em;
     margin: 0;
     border-radius: 0;
     position: relative;
@@ -603,7 +603,7 @@ Forms Core
     font-size: inherit;
     margin: 0;
     overflow: visible; /*to make ths where the title is really long work*/
-    padding: 0.3em 0.6em; /* cell padding */
+    padding: 0.18em 0.6em; /* cell padding */
 }
 
 .pure-skin-aca .pure-table td:first-child,
@@ -702,7 +702,7 @@ striping:
     display: block;
     color: inherit;
     line-height: 1.5em;
-    padding: 0.35em 1.4em;
+    padding: 0.21em 1.4em;
     text-decoration: none;
     white-space: nowrap;
 }
@@ -722,7 +722,7 @@ striping:
     /* height: 2.4em; removed for Skin Builder */
 }
 
-.pure-skin-aca .pure-menu li a { padding: 0.35em 1.4em; }
+.pure-skin-aca .pure-menu li a { padding: 0.21em 1.4em; }
 
 .pure-skin-aca .pure-menu-can-have-children > .pure-menu-label:after {
     content: '\25B8';
@@ -953,4 +953,3 @@ margin: 7px 2px;
 
 }
 /* end from menu-responsive.css ******************/
-
