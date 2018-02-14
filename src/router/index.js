@@ -4,6 +4,7 @@ import Form from '@/components/Form'
 import Thanks from '@/components/Thanks'
 import Signup from '@/components/Signup'
 import Login from '@/components/Login'
+import List from '@/components/List'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/list/:userId',
+      name: 'List',
+      component: List
     }
   ]
 })
