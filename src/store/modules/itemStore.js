@@ -13,9 +13,14 @@ const getters = {
 }
 
 const actions = {
-  fetchKVs ({ commit, rootState }) {
-    api.fetchKVs('a9b').then((res) => {
+  fetchKVs ({ commit, rootState }, targetId) {
+    api.fetchKVs(targetId).then((res) => {
       commit('setItems', res)
+    })
+  },
+  insertKV ({ commit, rootState }, item) {
+    api.insertKV(rootState.userStore.user, item).then((res) => {
+      console.log(res)
     })
   }
 }

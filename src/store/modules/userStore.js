@@ -1,6 +1,9 @@
 const state = {
-  user: {},
-  isLogined: false,
+  user: {
+    userId: 'a9b',
+    token: '283ef4ba-e679-442b-a287-fe0c00eaaaec'
+  },
+  isLogined: true,
   isAuthor: false
 }
 
