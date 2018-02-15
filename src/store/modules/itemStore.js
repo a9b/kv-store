@@ -22,6 +22,11 @@ const actions = {
     api.insertKV(rootState.userStore.user, item).then((res) => {
       console.log(res)
     })
+  },
+  deleteKV ({ commit, rootState }, item) {
+    api.deleteKV(rootState.userStore.user, item).then((res) => {
+      console.log(res)
+    })
   }
 }
 

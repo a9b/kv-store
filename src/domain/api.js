@@ -33,6 +33,23 @@ export default function ActionsFactory (config) {
       }).catch(function (error) {
         console.log(error)
       })
+    },
+    deleteKV (user, item) {
+      const client = axios.create({
+        baseURL: config.BaseURL,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': user.token
+        },
+        responseType: 'json'
+      })
+
+      console.log(user.userId, user.token, item)
+      return client.delete('/' + user.userId + '/' + item.key).then(function (res) {
+        return res.data
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
   }
 }
