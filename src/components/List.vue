@@ -1,5 +1,5 @@
 <template>
-  <div class="pure-u pure-u-22-24 layout-center">
+  <div>
     <div>
       {{ targetName }} Login:{{ isLogined }}
       <button v-if="isLogined" v-on:click="logout()">Logout</button>
@@ -57,8 +57,4 @@ export default {
 </script>
 
 <style>
-.layout-center {
-    display: block;
-    margin: 0 auto;
-}
 </style>

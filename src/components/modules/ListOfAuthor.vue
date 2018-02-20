@@ -1,39 +1,66 @@
 <template>
-  <form class="pure-form">
-    <fieldset>
-      <h1>Mypage</h1>
-      <div>
-        {{ itemsCount }} items
-      </div>
-      <hr>
-      <div>
-        <button class="pure-u-2-24 pure-button" v-on:click="isAdd = !isAdd" style="margin-bottom:10px;">
-          add
-        </button>
-        <div v-if="isAdd">
-          <input class="pure-u-5-24" type="text" placeholder="key" v-model="addItem.key">
-          <input class="pure-u-5-24" type="text" placeholder="value" v-model="addItem.value">
-          <button class="pure-u-2-24 pure-button" v-on:click="edit(addItem.key, addItem.value)">
+  <div>
+    <h2>Mypage</h2>
+    <div>
+      {{ itemsCount }} items
+    </div>
+    <hr>
+    <div class="field columns">
+      <div class="column is-12">
+        <a class="button is-link is-small" v-if="!isAdd" v-on:click="isAdd = !isAdd">
+          <icon name="plus"></icon>
+          <span class="is-right">
             add
-          </button>
-          <button class="pure-u-2-24 pure-button" v-on:click="isAdd = false">
-            delete
-          </button>
-        </div>
+          </span>
+        </a>
       </div>
+    </div>
+    <div v-if="isAdd" class="field columns">
+      <div class="column control is-5">
+        <input class="input is-small is-one-third is-link" type="text" placeholder="key" v-model="addItem.key">
+      </div>
+      <div class="column control is-5">
+        <input class="input is-small is-one-third is-link" type="text" placeholder="value" v-model="addItem.value">
+      </div>
+      <div class="column">
+        <a class="button is-small is-primary is-link" v-on:click="edit(addItem.key, addItem.value)">
+          <icon name="check"></icon>
+          <span>
+            add
+          </span>
+        </a>
+        <a class="button is-small is-primary is-link is-outlined" v-on:click="isAdd = false">
+          <span>
+            cancel
+          </span>
+          <icon name="times"></icon>
+        </a>
+      </div>
+    </div>
 
-      <div v-for="item in items" :key="item.key">
-        <input class="pure-u-5-24" type="text" :placeholder="item.key" readonly>
-        <input class="pure-u-5-24" type="text" v-model="item.value">
-        <button class="pure-u-2-24 pure-button" v-on:click="edit(item.key, item.value)">
-          edit
-        </button>
-        <button class="pure-u-2-24 pure-button" v-on:click="del(item.key)">
-          delete
-        </button>
+    <div v-for="item in items" :key="item.key" class="field columns">
+      <div class="column control is-5">
+        <input class="input is-small" type="text" :placeholder="item.key" readonly>
       </div>
-    </fieldset>
-  </form>
+      <div class="column control is-5">
+        <input class="input is-small is-one-third" type="text" v-model="item.value">
+      </div>
+      <div class="column">
+        <a class="button is-small is-primary" v-on:click="edit(item.key, item.value)">
+          <icon name="check"></icon>
+          <span>
+            edit
+          </span>
+        </a>
+        <a class="button is-small is-danger" v-on:click="del(item.key)">
+          <span>
+            delete
+          </span>
+          <icon name="times"></icon>
+        </a>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
