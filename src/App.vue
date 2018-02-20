@@ -21,14 +21,15 @@
 
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="field is-grouped">
+
+              <div v-if="!isLogined" class="field is-grouped">
                 <p class="control">
-                <a class="button is-small">
+                <a class="button is-small is-primary is-outlined">
                   <span class="icon">
                     <i class="fa fa-user-plus"></i>
                   </span>
                   <span>
-                    Register
+                    <router-link to="/signup">Signup</router-link>
                   </span>
                 </a>
                 </p>
@@ -37,10 +38,32 @@
                   <span class="icon">
                     <i class="fa fa-user"></i>
                   </span>
-                  <span>Login</span>
+                  <router-link to="/login">Login</router-link>
                 </a>
                 </p>
               </div>
+
+              <div v-if="isLogined" class="field is-grouped">
+                <p class="control">
+                <a class="button is-small is-info is-outlined">
+                  <span class="icon">
+                    <i class="fa fa-user"></i>
+                  </span>
+                  <router-link to="/User">User</router-link>
+                </a>
+                </p>
+                <p class="control">
+                <a v-on:click="logout" class="button is-small is-outlined">
+                  <span class="icon">
+                    <i class="fa fa-user-plus"></i>
+                  </span>
+                  <span>
+                    Logout
+                  </span>
+                </a>
+                </p>
+              </div>
+
             </div>
           </div>
         </div>
@@ -77,8 +100,29 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'App'
+  name: 'App',
+  data: function () {
+    return {
+      aaa: this.$store.itemStore
+    }
+  },
+  mounted: function () {
+  },
+  methods: {
+    logout: function () {
+      this.$store.dispatch('toLogout')
+      this.$router.push({name: 'Login'})
+    }
+  },
+  computed: {
+    ...mapGetters({
+      isLogined: 'isLogined',
+      user: 'getUser'
+    })
+  }
 }
 </script>
 

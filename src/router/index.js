@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Form from '@/components/Form'
 import Thanks from '@/components/Thanks'
 import Signup from '@/components/Signup'
 import Login from '@/components/Login'
@@ -12,8 +11,9 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Form',
-      component: Form
+      alias: '/login',
+      name: 'Login',
+      component: Login
     },
     {
       path: '/thanks',
@@ -24,11 +24,6 @@ export default new Router({
       path: '/signup',
       name: 'Signup',
       component: Signup
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
     },
     {
       path: '/list/:userId',

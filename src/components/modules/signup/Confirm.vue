@@ -1,21 +1,18 @@
 <template>
-  <div>
-    <form class="pure-form pure-form-aligned">
-      <fieldset>
-        <div class="pure-control-group">
-          <label for="name">Username</label>
-          <input id="name" v-model="username" placeholder="Username" readonly>
+  <div class="box">
+    <form>
+      <div class="field">
+        <div class="control">
+          <input id="name" v-model="username" :disabled="disableAllInputs" class="input is-large" autofocus="" readonly>
         </div>
+      </div>
 
-        <div class="pure-control-group">
-          <label for="code">Confirmation Code</label>
-          <input v-model="code" id="code" placeholder="Confirmation Code" required>
+      <div class="field">
+        <div class="control">
+          <input id="name" v-model="code" :disabled="disableAllInputs" class="input is-large" placeholder="Confirmation Code" required>
         </div>
-
-        <div class="pure-controls">
-          <button v-on:click="confirm()" type="submit" class="pure-button pure-button-primary">Confirm</button>
-        </div>
-      </fieldset>
+      </div>
+      <button v-on:click="confirm()" type="submit" class="button is-primary">Confirm</button>
     </form>
   </div>
 </template>
@@ -28,7 +25,9 @@ export default {
   name: 'confirm',
   data () {
     return {
-      code: ''
+      code: '',
+      errorMessage: '',
+      disableAllInputs: false
     }
   },
   props: ['username'],

@@ -1,10 +1,5 @@
 <template>
   <div>
-    <div>
-      {{ targetName }} Login:{{ isLogined }}
-      <button v-if="isLogined" v-on:click="logout()">Logout</button>
-      <button v-else v-on:click="login()">Login</button>
-    </div>
     <ListOfAuthor v-if="isLogined"></ListOfAuthor>
     <ListOfNotAuthor v-else></ListOfNotAuthor>
   </div>
@@ -21,14 +16,6 @@ export default {
   data () {
     return {
       targetName: this.$route.params.userId
-    }
-  },
-  methods: {
-    login: function () {
-      this.$store.dispatch('toLogin')
-    },
-    logout: function () {
-      this.$store.dispatch('toLogout')
     }
   },
   mounted: function () {

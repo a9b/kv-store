@@ -3,13 +3,14 @@ const state = {
     userId: 'a9b',
     token: '283ef4ba-e679-442b-a287-fe0c00eaaaec'
   },
-  isLogined: true,
+  isLogined: false,
   isAuthor: false
 }
 
 const getters = {
   isLogined: state => state.isLogined,
-  isAuthor: state => state.isAuthor
+  isAuthor: state => state.isAuthor,
+  getUser: state => state.user
 }
 
 const actions = {

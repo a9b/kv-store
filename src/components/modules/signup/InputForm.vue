@@ -1,31 +1,34 @@
 <template>
-  <div>
-    <form class="pure-form pure-form-aligned">
-      <fieldset>
-        <div class="pure-control-group">
-          <label for="name">Username</label>
-          <input id="name" v-model="username" placeholder="Username" required>
+  <div class="box">
+    <div class="alert alert-danger" v-show="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <form>
+      <div class="field">
+        <div class="control">
+          <input v-model="username" :disabled="disableAllInputs" class="input is-large" placeholder="Username" autocomplete="username" autofocus="autofocus" required="required">
         </div>
+      </div>
 
-        <div class="pure-control-group">
-          <label for="email">Email</label>
-          <input v-model="email" id="email" type="email" placeholder="Email" required>
+      <div class="field">
+        <div class="control">
+          <input v-model="email" :disabled="disableAllInputs" class="input is-large" placeholder="Email" autocomplete="email" required="required">
         </div>
+      </div>
 
-        <div class="pure-control-group">
-          <label for="password">Password</label>
-          <input v-model="password" id="password" autocomplete="password" type="password" placeholder="Password" required>
+      <div class="field">
+        <div class="control">
+          <input v-model="password" :disabled="disableAllInputs" class="input is-large" type="password" autocomplete="new-password" placeholder="Password" required="required">
         </div>
+      </div>
 
-        <div class="pure-control-group">
-          <label for="password-confirm">Password Confirm</label>
-          <input v-model="passwordConfirm" id="password-confirm" autocomplete="password confirm" type="password" placeholder="Password Confirm" required>
+      <div class="field">
+        <div class="control">
+          <input v-model="passwordConfirm" :disabled="disableAllInputs" class="input is-large" type="password" autocomplete="new-password" placeholder="Password Confirm" required="required">
         </div>
+      </div>
 
-        <div class="pure-controls">
-          <button v-on:click="signup()" type="submit" class="pure-button pure-button-primary">SignUp</button>
-        </div>
-      </fieldset>
+      <button v-on:click="signup()" type="submit" class="button is-block is-info is-large is-fullwidth">SignUp</button>
     </form>
   </div>
 </template>
@@ -43,15 +46,14 @@ export default {
       password: '',
       passwordConfirm: '',
       email: '',
-      attributes: {}
+      attributes: {},
+      errorMessage: '',
+      disableAllInputs: false
     }
   },
   methods: {
-    hoge: function () {
-      console.log(this.username)
-      this.$emit('child-set-username', this.username)
-    },
     signup: function () {
+      this.disableAllInputs = true
       var poolData = { UserPoolId: Config.UserPoolId, ClientId: Config.ClientId }
 
       var attributeList = []

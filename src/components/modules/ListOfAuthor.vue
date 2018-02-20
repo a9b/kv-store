@@ -1,10 +1,5 @@
 <template>
   <div>
-    <h2>Mypage</h2>
-    <div>
-      {{ itemsCount }} items
-    </div>
-    <hr>
     <div class="field columns">
       <div class="column is-12">
         <a class="button is-link is-small" v-if="!isAdd" v-on:click="isAdd = !isAdd">
@@ -17,10 +12,10 @@
     </div>
     <div v-if="isAdd" class="field columns">
       <div class="column control is-5">
-        <input class="input is-small is-one-third is-link" type="text" placeholder="key" v-model="addItem.key">
+        <input class="input is-small is-link" type="text" placeholder="key" v-model="addItem.key">
       </div>
       <div class="column control is-5">
-        <input class="input is-small is-one-third is-link" type="text" placeholder="value" v-model="addItem.value">
+        <input class="input is-small is-link" type="text" placeholder="value" v-model="addItem.value">
       </div>
       <div class="column">
         <a class="button is-small is-primary is-link" v-on:click="edit(addItem.key, addItem.value)">
@@ -43,7 +38,7 @@
         <input class="input is-small" type="text" :placeholder="item.key" readonly>
       </div>
       <div class="column control is-5">
-        <input class="input is-small is-one-third" type="text" v-model="item.value">
+        <input class="input is-small" type="text" v-model="item.value">
       </div>
       <div class="column">
         <a class="button is-small is-primary" v-on:click="edit(item.key, item.value)">

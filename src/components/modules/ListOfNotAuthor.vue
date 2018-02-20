@@ -1,21 +1,22 @@
 <template>
-  <form class="pure-form">
-    <fieldset>
-      <h2>{{ targetName }}</h2>
-      <div>
-        {{ itemsCount }} items
+  <div>
+    <div v-for="item in items" :key="item.key" class="field columns">
+      <div class="column control is-3">
+        <input class="input is-small" type="text" :placeholder="item.key" readonly>
       </div>
-      <hr>
-      <div v-for="item in items" :key="item.key">
-        <input class="pure-u-5-24" type="text" :placeholder="item.key" readonly>
-        <input class="pure-u-5-24" type="text" :placeholder="item.value" readonly>
-        <input class="pure-u-10-24" type="text" :value="getUrl(targetName, item.key)">
-        <button class="pure-u-2-24 pure-button btn" :data-clipboard-text="getUrl(targetName, item.key)">
+      <div class="column control is-3">
+        <input class="input is-small" type="text" :placeholder="item.value" readonly>
+      </div>
+      <div class="column control is-3">
+        <input class="input is-small" type="text" :value="getUrl(targetName, item.key)">
+      </div>
+      <div class="column control">
+        <button class="clipboard button is-small is-primary" :data-clipboard-text="getUrl(targetName, item.key)">
           copy
         </button>
       </div>
-    </fieldset>
-  </form>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -38,7 +39,7 @@ export default {
     this.$store.dispatch('fetchKVs', this.targetName)
 
     // https://qiita.com/koara-local/items/7c0155306e158d76526b
-    const Clipboard = new _Clipboard('.btn')
+    const Clipboard = new _Clipboard('.clipboard')
     Clipboard.on('success', function (e) {
       e.clearSelection()
     })

@@ -1,8 +1,12 @@
 <template>
-  <div class="pure-u pure-u-1-2 layout-center">
-    <h1>Sign up</h1>
-    <InputForm v-if="displayInput" @child-set-username="parentSetUsername"></InputForm>
-    <Confirm v-if="displayConfirm" :username="username"></Confirm>
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="column is-4 is-offset-4">
+        <h2 class="title has-text-grey">Signup</h2>
+        <InputForm v-if="displayInput" @child-set-username="parentSetUsername"></InputForm>
+        <Confirm v-if="displayConfirm" :username="username"></Confirm>
+      </div>
+    </div>
   </div>
 </template>
 
