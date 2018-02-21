@@ -3,7 +3,7 @@
     <div class="container has-text-centered">
       <div class="column is-4 is-offset-4">
         <h2 class="title has-text-grey">Signup</h2>
-        <InputForm v-if="displayInput" @child-set-username="parentSetUsername"></InputForm>
+        <Form v-if="displayInput" @child-set-username="parentSetUsername"></Form>
         <Confirm v-if="displayConfirm" :username="username"></Confirm>
       </div>
     </div>
@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import InputForm from './modules/signup/InputForm'
-import Confirm from './modules/signup/Confirm'
+import Form from './modules/SignupForm'
+import Confirm from './modules/SignupConfirm'
 
 export default {
-  name: 'signup',
+  name: 'Signup',
   data () {
     return {
       username: '',
@@ -24,7 +24,7 @@ export default {
     }
   },
   components: {
-    InputForm,
+    Form,
     Confirm
   },
   methods: {

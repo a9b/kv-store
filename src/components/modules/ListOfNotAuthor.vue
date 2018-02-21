@@ -22,6 +22,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import _Clipboard from 'clipboard'
+import Config from '@/../config/api'
 
 export default {
   name: 'List',
@@ -32,7 +33,7 @@ export default {
   },
   methods: {
     getUrl: function (username, key) {
-      return 'https://api.status.96over.com/' + username + '/' + key
+      return Config.BaseURL + username + '/' + key
     }
   },
   mounted: function () {

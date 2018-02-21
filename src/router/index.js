@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Thanks from '@/components/Thanks'
 import Signup from '@/components/Signup'
 import Login from '@/components/Login'
 import List from '@/components/List'
@@ -14,11 +13,6 @@ export default new Router({
       alias: '/login',
       name: 'Login',
       component: Login
-    },
-    {
-      path: '/thanks',
-      name: 'Thanks',
-      component: Thanks
     },
     {
       path: '/signup',
