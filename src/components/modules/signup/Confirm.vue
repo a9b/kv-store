@@ -33,18 +33,18 @@ export default {
   props: ['username'],
   methods: {
     confirm: function () {
-      var poolData = {
+      const poolData = {
         UserPoolId: Config.UserPoolId,
         ClientId: Config.ClientId
       }
 
-      var userPool = new CognitoUserPool(poolData)
-      var userData = {
+      const userPool = new CognitoUserPool(poolData)
+      const userData = {
         Username: this.username,
         Pool: userPool
       }
 
-      var cognitoUser = new CognitoUser(userData)
+      const cognitoUser = new CognitoUser(userData)
       cognitoUser.confirmRegistration(this.code, true, function (err, result) {
         if (err) {
           console.log(err)

@@ -15,7 +15,7 @@
         <div id="topNav" class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item" href="forum.html">
-              Home
+              status.96over.com
             </a>
           </div>
 
