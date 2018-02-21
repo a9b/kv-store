@@ -4,7 +4,7 @@
       <div class="column is-4 is-offset-4">
         <h2 class="title has-text-grey">Signup</h2>
         <Form v-if="displayInput" @child-set-username="parentSetUsername"></Form>
-        <Confirm v-if="displayConfirm" :username="username"></Confirm>
+        <Confirmation v-if="displayConfirmation" :username="username"></Confirmation>
       </div>
     </div>
   </div>
@@ -12,7 +12,7 @@
 
 <script>
 import Form from './modules/SignupForm'
-import Confirm from './modules/SignupConfirm'
+import Confirmation from './modules/SignupConfirmation'
 
 export default {
   name: 'Signup',
@@ -20,26 +20,22 @@ export default {
     return {
       username: '',
       displayInput: true,
-      displayConfirm: false
+      displayConfirmation: false
     }
   },
   components: {
     Form,
-    Confirm
+    Confirmation
   },
   methods: {
     parentSetUsername: function (username) {
       this.username = username
       this.displayInput = false
-      this.displayConfirm = true
+      this.displayConfirmation = true
     }
   }
 }
 </script>
 
 <style>
-.layout-center {
-    display: block;
-    margin: 0 auto;
-}
 </style>

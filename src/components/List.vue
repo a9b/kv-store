@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ListOfAuthor v-if="isLogined"></ListOfAuthor>
+    <ListOfAuthor v-if="isAuthor"></ListOfAuthor>
     <ListOfNotAuthor v-else></ListOfNotAuthor>
   </div>
 </template>
@@ -15,6 +15,7 @@ export default {
   name: 'List',
   data () {
     return {
+      isAuthor: false,
       targetName: this.$route.params.userId
     }
   },
@@ -28,10 +29,15 @@ export default {
       console.error('Action:', e.action)
       console.error('Trigger:', e.trigger)
     })
+
+    this.$store.dispatch('getCurrentUser').then((res) => {
+      this.isAuthor = this.targetName === res.username
+    }).catch(() => {
+      this.isAuthor = false
+    })
   },
   computed: {
     ...mapGetters([
-      'isLogined',
       'items',
       'itemsCount'
     ])

@@ -30,8 +30,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'Login',
   data () {
@@ -44,14 +42,13 @@ export default {
     }
   },
   mounted: function () {
-    if (this.isLogined) {
-      this.$router.push({name: 'List', params: { userId: this.username }})
-    }
+    this.$store.dispatch('getCurrentUser').then((res) => {
+      this.$router.push({name: 'List', params: { userId: res.username }})
+    }).catch((err) => {
+      console.log(err)
+    })
   },
   computed: {
-    ...mapGetters([
-      'isLogined'
-    ]),
     formIsValid () {
       return /[\S]+/.test(this.username)
     }
@@ -68,7 +65,6 @@ export default {
         this.disableAllInputs = true
         this.password = ''
         this.errorMessage = null
-        this.$store.dispatch('toLogin')
         this.$router.push({name: 'List', params: { userId: this.username }})
       }).catch((err) => {
         this.errorMessage = err.message
@@ -80,8 +76,4 @@ export default {
 </script>
 
 <style>
-.layout-center {
-    display: block;
-    margin: 0 auto;
-}
 </style>

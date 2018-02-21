@@ -14,7 +14,7 @@
 
         <div id="topNav" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="forum.html">
+            <a class="navbar-item" href="">
               status.96over.com
             </a>
           </div>
@@ -100,28 +100,28 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'App',
   data: function () {
     return {
-      aaa: this.$store.itemStore
     }
   },
   mounted: function () {
   },
   methods: {
     logout: function () {
-      this.$store.dispatch('toLogout')
-      this.$router.push({name: 'Login'})
+      this.$store.dispatch('signOut').then(() => {
+        this.$router.push({name: 'Login'})
+      }).catch((err) => {
+        this.errorMessage = err.message
+        this.protectedUI = false
+      })
     }
   },
   computed: {
-    ...mapGetters({
-      isLogined: 'isLogined',
-      user: 'getUser'
-    })
+    isLogined: function () {
+      return !(this.$store.state.userStore.user === null)
+    }
   }
 }
 </script>

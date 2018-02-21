@@ -59,7 +59,6 @@
 </template>
 
 <script>
-import Config from '@/../config/api'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -72,9 +71,6 @@ export default {
     }
   },
   methods: {
-    getUrl: function (username, key) {
-      return Config.BaseURL + username + '/' + key
-    },
     edit: function (key, value) {
       this.$store.dispatch('insertKV', {'key': key, 'value': value})
     },

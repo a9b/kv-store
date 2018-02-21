@@ -24,18 +24,16 @@
 
       <div class="field">
         <div class="control">
-          <input v-model="passwordConfirm" :disabled="disableAllInputs" class="input is-large" type="password" autocomplete="new-password" placeholder="Password Confirm" required="required">
+          <input v-model="passwordConfirmation" :disabled="disableAllInputs" class="input is-large" type="password" autocomplete="new-password" placeholder="Password Confirmation" required="required">
         </div>
       </div>
 
-      <button v-on:click="signup()" type="submit" class="button is-block is-info is-large is-fullwidth">SignUp</button>
+      <button v-on:click="signup()" :disabled="protectedUI || !formIsValid || disableAllInputs" type="submit" class="button is-block is-info is-large is-fullwidth">SignUp</button>
     </form>
   </div>
 </template>
 
 <script>
-import { CognitoUserPool, CognitoUserAttribute } from 'amazon-cognito-identity-js'
-import Config from '@/../config/cognito.js'
 import Uuid from 'uuid'
 
 export default {
@@ -44,37 +42,47 @@ export default {
     return {
       username: '',
       password: '',
-      passwordConfirm: '',
+      passwordConfirmation: '',
       email: '',
-      attributes: {},
-      errorMessage: '',
-      disableAllInputs: false
+      errorMessage: null,
+      disableAllInputs: false,
+      protectedUI: false
+    }
+  },
+  computed: {
+    formIsValid () {
+      return this.username.length > 0 &&
+             this.email.indexOf('@') > 1 &&
+             /[a-z]+/.test(this.password) &&
+             /[A-Z]+/.test(this.password) &&
+             /[0-9]+/.test(this.password) &&
+             this.password.length >= 6 &&
+             this.password === this.passwordConfirmation
     }
   },
   methods: {
     signup: function () {
       this.disableAllInputs = true
-      var poolData = { UserPoolId: Config.UserPoolId, ClientId: Config.ClientId }
+      this.protectedUI = true
+      this.errorMessage = null
 
-      var attributeList = []
-      var dataEmail = { Name: 'email', Value: this.email }
-      // これサーバー側でやった方がよい
-      var dataToken = { Name: 'custom:token', Value: Uuid() }
-      attributeList.push(new CognitoUserAttribute(dataEmail))
-      attributeList.push(new CognitoUserAttribute(dataToken))
-
-      var userPool = new CognitoUserPool(poolData)
-      userPool.signUp(this.username, this.password, attributeList, null, function (err, result) {
-        if (err) {
-          console.log(err)
-          return
+      const signupUser = {
+        username: this.username,
+        password: this.password,
+        attributes: {
+          email: this.email,
+          // これサーバー側でやった方がよい
+          'custom:token': Uuid()
         }
-        var cognitoUser = result.user
+      }
 
-        console.log('user name is ' + cognitoUser.getUsername())
+      this.$store.dispatch('signUp', signupUser).then(() => {
+        this.$emit('child-set-username', this.username)
+      }).catch((err) => {
+        this.disableAllInputs = false
+        this.protectedUI = false
+        this.errorMessage = err.message
       })
-
-      this.$emit('child-set-username', this.username)
     }
   }
 }

@@ -22,6 +22,7 @@
     "axios": "^0.17.1",
     "bluebird": "^3.5.1",
     "clipboard": "^1.7.1",
+    "jwt-decode": "^2.2.0",
     "uuid": "^3.2.1",
     "vue": "^2.5.2",
     "vue-auth-cognito": "^0.1.5",

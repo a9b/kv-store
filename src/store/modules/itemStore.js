@@ -1,5 +1,6 @@
 import _apiConfig from '@/../config/api'
 import _api from '@/domain/api.js'
+import decoder from 'jwt-decode'
 
 const api = new _api(_apiConfig)
 
@@ -19,13 +20,21 @@ const actions = {
     })
   },
   insertKV ({ commit, rootState }, item) {
-    api.insertKV(rootState.userStore.user, item).then((res) => {
+    const user = decoder(rootState.userStore.user.tokens.IdToken)
+
+    api.insertKV(user, item).then((res) => {
       console.log(res)
+    }).catch((err) => {
+      console.log(err)
     })
   },
   deleteKV ({ commit, rootState }, item) {
-    api.deleteKV(rootState.userStore.user, item).then((res) => {
+    const user = decoder(rootState.userStore.user.tokens.IdToken)
+
+    api.deleteKV(user, item).then((res) => {
       console.log(res)
+    }).catch((err) => {
+      console.log(err)
     })
   }
 }
