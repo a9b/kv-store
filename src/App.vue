@@ -4,12 +4,31 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="">
+            hoge
           </a>
-          <div class="navbar-burger burger" data-target="topNav">
-            <span></span>
-            <span></span>
-            <span></span>
+
+          <div v-if="!isLogined" class="navbar-burger burger" data-target="topNav">
+            <span>
+              <icon name="user-plus"></icon>
+              <router-link to="/signup">Signup</router-link>
+            </span>
+            <span>
+              <icon name="sign-in"></icon>
+              <router-link to="/login">Login</router-link>
+            </span>
           </div>
+
+          <div v-if="isLogined" class="navbar-burger burger" data-target="topNav">
+            <span>
+              <icon name="user"></icon>
+              <router-link to="/User">User</router-link>
+            </span>
+            <span>
+              <icon name="sign-out"></icon>
+              <span>Logout</span>
+            </span>
+          </div>
+
         </div>
 
         <div id="topNav" class="navbar-menu">
@@ -25,13 +44,13 @@
               <div v-if="!isLogined" class="field is-grouped">
                 <p class="control">
                 <a class="button is-small is-primary is-outlined">
-                  <i class="fa fa-user-plus fa-fw"></i>
+                  <icon name="user-plus"></icon>
                   <router-link to="/signup">Signup</router-link>
                 </a>
                 </p>
                 <p class="control">
                 <a class="button is-small is-info is-outlined">
-                  <i class="fa fa-user"></i>
+                  <icon name="sign-in"></icon>
                   <router-link to="/login">Login</router-link>
                 </a>
                 </p>
@@ -40,13 +59,13 @@
               <div v-if="isLogined" class="field is-grouped">
                 <p class="control">
                 <a class="button is-small is-info is-outlined">
-                  <i class="fa fa-user fa-fw"></i>
+                  <icon name="user"></icon>
                   <router-link to="/User">User</router-link>
                 </a>
                 </p>
                 <p class="control">
                 <a v-on:click="logout" class="button is-small is-outlined">
-                  <i class="fa fa-sign-out-alt fa-fw"></i>
+                  <icon name="sign-out"></icon>
                   <span>Logout</span>
                 </a>
                 </p>
@@ -120,5 +139,16 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.fa-icon {
+  display: inline-block;
+  text-align: center;
+  vertical-align: -.125em;
+  width: 1.25em;
+  height: 1em; /* or any other relative font sizes */
+
+  /* You would have to include the following two lines to make this work in Safari */
+  max-width: 100%;
+  max-height: 100%;
 }
 </style>

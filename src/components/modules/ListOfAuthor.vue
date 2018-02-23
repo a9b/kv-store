@@ -4,7 +4,7 @@
       <div class="column is-12">
         <a class="button is-link is-small" v-if="!isAdd" v-on:click="isAdd = !isAdd">
           <span class="is-right">
-            <i class="fa fa-plus fa-fw"></i>
+            <icon name="plus"></icon>
             add
           </span>
         </a>
@@ -20,14 +20,14 @@
       <div class="column">
         <a class="button is-small is-primary is-link" v-on:click="edit(addItem.key, addItem.value)">
           <span>
-            <i class="fa fa-check fa-fw"></i>
+            <icon name="check"></icon>
             add
           </span>
         </a>
         <a class="button is-small is-primary is-link is-outlined" v-on:click="isAdd = false">
           <span>
             cancel
-            <i class="fa fa-times fa-fw"></i>
+            <icon name="times"></icon>
           </span>
         </a>
       </div>
@@ -43,14 +43,14 @@
       <div class="column">
         <a class="button is-small is-primary" v-on:click="edit(item.key, item.value)">
           <span>
-            <i class="fa fa-check fa-fw"></i>
+            <icon name="check"></icon>
             edit
           </span>
         </a>
         <a class="button is-small is-danger" v-on:click="del(item.key)">
           <span>
             delete
-            <i class="fa fa-times fa-fw"></i>
+            <icon name="times"></icon>
           </span>
         </a>
       </div>
