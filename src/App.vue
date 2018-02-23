@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="">
-            hoge
+            status.96over.com
           </a>
 
           <div v-if="!isLogined" class="navbar-burger burger" data-target="topNav">
