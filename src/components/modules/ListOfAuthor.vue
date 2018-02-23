@@ -67,19 +67,27 @@ export default {
     return {
       isAdd: false,
       addItem: {},
+      flg: false,
       targetName: this.$route.params.userId
     }
   },
   methods: {
     edit: function (key, value) {
-      this.$store.dispatch('insertKV', {'key': key, 'value': value})
+      this.$store.dispatch('insertKV', {'key': key, 'value': value}).then(() => {
+        this.$store.dispatch('fetchKVs', this.targetName)
+      }).then(() => {
+        this.isAdd = false
+      }).catch((err) => {
+        console.log(err)
+      })
     },
     del: function (key) {
-      this.$store.dispatch('deleteKV', {'key': key})
+      this.$store.dispatch('deleteKV', {'key': key}).then(() => {
+        this.$store.dispatch('fetchKVs', this.targetName)
+      }).catch((err) => {
+        console.log(err)
+      })
     }
-  },
-  mounted: function () {
-    this.$store.dispatch('fetchKVs', this.targetName)
   },
   computed: {
     ...mapGetters([

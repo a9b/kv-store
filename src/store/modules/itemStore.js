@@ -22,19 +22,25 @@ const actions = {
   insertKV ({ commit, rootState }, item) {
     const user = decoder(rootState.userStore.user.tokens.IdToken)
 
-    api.insertKV(user, item).then((res) => {
-      console.log(res)
-    }).catch((err) => {
-      console.log(err)
+    return new Promise((resolve, reject) => {
+      api.insertKV(user, item).then((res) => {
+        console.log(res)
+        resolve()
+      }).catch((err) => {
+        console.log(err)
+      })
     })
   },
   deleteKV ({ commit, rootState }, item) {
     const user = decoder(rootState.userStore.user.tokens.IdToken)
 
-    api.deleteKV(user, item).then((res) => {
-      console.log(res)
-    }).catch((err) => {
-      console.log(err)
+    return new Promise((resolve, reject) => {
+      api.deleteKV(user, item).then((res) => {
+        console.log(res)
+        resolve()
+      }).catch((err) => {
+        console.log(err)
+      })
     })
   }
 }
