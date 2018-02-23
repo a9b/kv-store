@@ -25,19 +25,13 @@
               <div v-if="!isLogined" class="field is-grouped">
                 <p class="control">
                 <a class="button is-small is-primary is-outlined">
-                  <span class="icon">
-                    <i class="fa fa-user-plus"></i>
-                  </span>
-                  <span>
-                    <router-link to="/signup">Signup</router-link>
-                  </span>
+                  <i class="fa fa-user-plus fa-fw"></i>
+                  <router-link to="/signup">Signup</router-link>
                 </a>
                 </p>
                 <p class="control">
                 <a class="button is-small is-info is-outlined">
-                  <span class="icon">
-                    <i class="fa fa-user"></i>
-                  </span>
+                  <i class="fa fa-user"></i>
                   <router-link to="/login">Login</router-link>
                 </a>
                 </p>
@@ -46,20 +40,14 @@
               <div v-if="isLogined" class="field is-grouped">
                 <p class="control">
                 <a class="button is-small is-info is-outlined">
-                  <span class="icon">
-                    <i class="fa fa-user"></i>
-                  </span>
+                  <i class="fa fa-user fa-fw"></i>
                   <router-link to="/User">User</router-link>
                 </a>
                 </p>
                 <p class="control">
                 <a v-on:click="logout" class="button is-small is-outlined">
-                  <span class="icon">
-                    <i class="fa fa-user-plus"></i>
-                  </span>
-                  <span>
-                    Logout
-                  </span>
+                  <i class="fa fa-sign-out-alt fa-fw"></i>
+                  <span>Logout</span>
                 </a>
                 </p>
               </div>
