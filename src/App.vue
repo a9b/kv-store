@@ -41,7 +41,7 @@
                 <p class="control">
                 <a class="button is-info is-outlined">
                   <icon name="user"></icon>
-                  <router-link to="/User">User</router-link>
+                  <router-link to="/user">User</router-link>
                 </a>
                 </p>
                 <p class="control">
