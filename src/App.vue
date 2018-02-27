@@ -6,29 +6,11 @@
           <a class="navbar-item" href="">
             status.96over.com
           </a>
-
-          <div v-if="!isLogined" class="navbar-burger burger" data-target="topNav">
-            <span>
-              <icon name="user-plus"></icon>
-              <router-link to="/signup">Signup</router-link>
-            </span>
-            <span>
-              <icon name="sign-in"></icon>
-              <router-link to="/login">Login</router-link>
-            </span>
+          <div class="navbar-burger burger" data-target="topNav">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
-
-          <div v-if="isLogined" class="navbar-burger burger" data-target="topNav">
-            <span>
-              <icon name="user"></icon>
-              <router-link to="/User">User</router-link>
-            </span>
-            <span>
-              <icon name="sign-out"></icon>
-              <span>Logout</span>
-            </span>
-          </div>
-
         </div>
 
         <div id="topNav" class="navbar-menu">
@@ -70,9 +52,9 @@
                 </a>
                 </p>
               </div>
-
             </div>
           </div>
+
         </div>
       </div>
     </nav>
@@ -114,6 +96,12 @@ export default {
     }
   },
   mounted: function () {
+    const burger = document.querySelector('.burger')
+    const menu = document.querySelector('#' + burger.dataset.target)
+    burger.addEventListener('click', function () {
+      burger.classList.toggle('is-active')
+      menu.classList.toggle('is-active')
+    })
   },
   methods: {
     logout: function () {
