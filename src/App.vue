@@ -121,7 +121,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../node_modules/bulma/bulma.sass"; /* 追加 */
 .app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -138,4 +137,5 @@ export default {
   max-width: 100%;
   max-height: 100%;
 }
+@import "../node_modules/bulma/bulma.sass";
 </style>
