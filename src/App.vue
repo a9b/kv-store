@@ -16,7 +16,6 @@
         <div id="topNav" class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item" href="">
-              status.96over.com
             </a>
           </div>
 
@@ -25,13 +24,13 @@
 
               <div v-if="!isLogined" class="field is-grouped">
                 <p class="control">
-                <a class="button is-small is-primary is-outlined">
+                <a class="button is-primary is-outlined">
                   <icon name="user-plus"></icon>
                   <router-link to="/signup">Signup</router-link>
                 </a>
                 </p>
                 <p class="control">
-                <a class="button is-small is-info is-outlined">
+                <a class="button is-info is-outlined">
                   <icon name="sign-in"></icon>
                   <router-link to="/login">Login</router-link>
                 </a>
@@ -40,13 +39,13 @@
 
               <div v-if="isLogined" class="field is-grouped">
                 <p class="control">
-                <a class="button is-small is-info is-outlined">
+                <a class="button is-info is-outlined">
                   <icon name="user"></icon>
                   <router-link to="/User">User</router-link>
                 </a>
                 </p>
                 <p class="control">
-                <a v-on:click="logout" class="button is-small is-outlined">
+                <a v-on:click="logout" class="button is-outlined">
                   <icon name="sign-out"></icon>
                   <span>Logout</span>
                 </a>

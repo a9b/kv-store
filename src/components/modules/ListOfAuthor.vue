@@ -2,7 +2,7 @@
   <div>
     <div class="field columns">
       <div class="column is-12">
-        <a class="button is-link is-small" v-if="!isAdd" v-on:click="isAdd = !isAdd">
+        <a class="button is-link" v-if="!isAdd" v-on:click="isAdd = !isAdd">
           <span class="is-right">
             <icon name="plus"></icon>
             add
@@ -12,19 +12,19 @@
     </div>
     <div v-if="isAdd" class="field columns">
       <div class="column control is-5">
-        <input class="input is-small is-link" type="text" placeholder="key" v-model="addItem.key">
+        <input class="input is-link" type="text" placeholder="key" v-model="addItem.key">
       </div>
       <div class="column control is-5">
-        <input class="input is-small is-link" type="text" placeholder="value" v-model="addItem.value">
+        <input class="input is-link" type="text" placeholder="value" v-model="addItem.value">
       </div>
       <div class="column">
-        <a class="button is-small is-primary is-link" v-on:click="edit(addItem.key, addItem.value)">
+        <a class="button is-primary is-link" v-on:click="edit(addItem.key, addItem.value)">
           <span>
             <icon name="check"></icon>
             add
           </span>
         </a>
-        <a class="button is-small is-primary is-link is-outlined" v-on:click="isAdd = false">
+        <a class="button is-primary is-link is-outlined" v-on:click="isAdd = false">
           <span>
             cancel
             <icon name="times"></icon>
@@ -35,19 +35,19 @@
 
     <div v-for="item in items" :key="item.key" class="field columns">
       <div class="column control is-5">
-        <input class="input is-small" type="text" :placeholder="item.key" readonly>
+        <input class="input" type="text" :placeholder="item.key" readonly>
       </div>
       <div class="column control is-5">
-        <input class="input is-small" type="text" v-model="item.value">
+        <input class="input" type="text" v-model="item.value">
       </div>
       <div class="column">
-        <a class="button is-small is-primary" v-on:click="edit(item.key, item.value)">
+        <a class="button is-primary" v-on:click="edit(item.key, item.value)">
           <span>
             <icon name="check"></icon>
             edit
           </span>
         </a>
-        <a class="button is-small is-danger" v-on:click="del(item.key)">
+        <a class="button is-danger" v-on:click="del(item.key)">
           <span>
             delete
             <icon name="times"></icon>

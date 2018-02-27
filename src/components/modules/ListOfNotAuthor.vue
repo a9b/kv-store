@@ -2,16 +2,16 @@
   <div>
     <div v-for="item in items" :key="item.key" class="field columns">
       <div class="column control is-3">
-        <input class="input is-small" type="text" :placeholder="item.key" readonly>
+        <input class="input" type="text" :placeholder="item.key" readonly>
       </div>
       <div class="column control is-3">
-        <input class="input is-small" type="text" :placeholder="item.value" readonly>
+        <input class="input" type="text" :placeholder="item.value" readonly>
       </div>
       <div class="column control is-3">
-        <input class="input is-small" type="text" :value="getUrl(targetName, item.key)">
+        <input class="input" type="text" :value="getUrl(targetName, item.key)">
       </div>
       <div class="column control">
-        <button class="clipboard button is-small is-primary" :data-clipboard-text="getUrl(targetName, item.key)">
+        <button class="clipboard button is-primary" :data-clipboard-text="getUrl(targetName, item.key)">
           copy
         </button>
       </div>
