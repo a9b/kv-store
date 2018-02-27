@@ -13,11 +13,14 @@
         </div>
 
         <div class="box">
-          curl -X POST -i 'https://api.status.96over.com/{{ userId }}/{key}' -H 'Authorization: {{ userCustomToken }}' -d '{"{kye}": "value"}'
+          curl -X POST -i 'https://api.status.96over.com/{{ userId }}/{key}' \<br>
+          -H 'Authorization: {{ userCustomToken }}' \<br>
+          -d '{"{key}": "{value}"}'
         </div>
 
         <div class="box">
-          curl -X DELETE -i 'https://api.status.96over.com/{{ userId }}/{key}' -H 'Authorization: {{ userCustomToken }}'
+          curl -X DELETE -i 'https://api.status.96over.com/{{ userId }}/{key}' \<br>
+          -H 'Authorization: {{ userCustomToken }}'
         </div>
 
       </div>
