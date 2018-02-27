@@ -2,8 +2,8 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       <div class="column is-4 is-offset-4">
-        <h2 class="title has-text-grey">Login</h2>
-        <p class="subtitle has-text-grey">Please login to proceed.</p>
+        <h2 class="title has-text-grey">User</h2>
+        <p class="subtitle has-text-grey">Usage</p>
         <div class="alert alert-danger" v-show="errorMessage">
           {{ errorMessage }}
         </div>
