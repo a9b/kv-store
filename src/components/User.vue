@@ -15,7 +15,7 @@
         <div class="box">
           curl -X POST -i 'https://api.status.96over.com/{{ userId }}/{key}' \<br>
           -H 'Authorization: {{ userCustomToken }}' \<br>
-          -d '{"{key}": "{value}"}'
+          -d '{"key","{key}", "value":"{value}"}'
         </div>
 
         <div class="box">
